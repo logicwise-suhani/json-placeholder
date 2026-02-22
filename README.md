@@ -1,18 +1,31 @@
-# React + Vite
+# JSON Placeholder Posts Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React application that fetches posts from the JSONPlaceholder API and displays them as interactive cards. When a user clicks on a card, they are redirected to a detailed view of that specific post.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fetches data from JSONPlaceholder API
+- Displays posts as responsive cards
+- Clickable cards
+- Dynamic routing for individual post details
+- Clean and minimal UI
+- Uses React Hooks (useState, useEffect)
+- Uses React Router for navigation
 
-## React Compiler
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🛠 Tech Stack
 
-Note: This will impact Vite dev & build performances.
+- React
+- Vite
+- JavaScript (ES6+)
+- Fetch API
+- React Router DOM
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 API Used
+
+Data is fetched from:
+
+https://jsonplaceholder.typicode.com/posts
