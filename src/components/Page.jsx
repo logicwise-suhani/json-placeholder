@@ -5,7 +5,7 @@ function Page() {
 const url = "https://jsonplaceholder.typicode.com/posts";
   const [users, setUsers] = useState([]);
 
-  useEffect(() => {
+useEffect(() => {
 fetch(url)
       .then(response => {
         return response.json()
@@ -20,9 +20,9 @@ fetch(url)
     <>
     <div className="card-container">
           {users.length > 0 && users.map(user => (
-            <a href={`https://jsonplaceholder.typicode.com/posts/${user.id}`} style={{color:"red"}}>
+            <a href={`https://jsonplaceholder.typicode.com/posts/${user.id}`} style={{color:"red"}} key={user.id}>
             <div key={user.id} style={{listStyle:"none"}} className="card">
-              <h3 style={{color:"blue"}}>{user.id}. {" "}
+              <h3 style={{color:"blue"}} >{user.id}. {" "}
                  {user.title}
               </h3> 
               </div>
