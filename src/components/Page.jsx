@@ -1,39 +1,46 @@
-import { useEffect } from "react";
-import {useState } from "react";
-function Page() {
+import { useNavigate } from "react-router-dom";
 
-const url = "https://jsonplaceholder.typicode.com/posts";
-  const [users, setUsers] = useState([]);
+function Page({ users, setUsers }) {
+  const navigate = useNavigate();
 
-useEffect(() => {
-fetch(url)
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setUsers(data)
-      })
-  }, [])
- 
+  const handleDelete = (id) => {
+    const confirmDelete = confirm("Are you sure want to delete? ")
+    if (confirmDelete) setUsers(prev => prev.filter(user => user.id !== id));
+  };
 
   return (
     <>
-    <div className="card-container">
-          {users.length > 0 && users.map(user => (
-            <a href={`https://jsonplaceholder.typicode.com/posts/${user.id}`} style={{color:"red"}} key={user.id}>
-            <div key={user.id} style={{listStyle:"none"}} className="card">
-              <h3 style={{color:"blue"}} >{user.id}. {" "}
-                 {user.title}
-              </h3> 
-              </div>
-              </a>
-          ))}
-    </div>
+      <div className="card-container">
+        <table border="1">
+          <thead>
+            <tr>
+              {users.length > 0 && Object.keys(users[0]).map((key) => (
+                <th key={key}>{key}</th>
+              ))}
+              <th>Action Buttons</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.length > 0 && users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.userId}</td>
+                <td>{user.id}</td>
+                <td>{user.title}</td>
+                <td>{user.body}</td>
+                <td>
+                  <button onClick={() => navigate(`/edit/${user.id}`)}>Edit</button>
+                  <button onClick={() => handleDelete(user.id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
-  
+
   )
 
-    
+
 }
 
 export default Page;
