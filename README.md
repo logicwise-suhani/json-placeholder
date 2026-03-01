@@ -1,13 +1,15 @@
 # JSON Placeholder Posts Viewer
 
-A simple React application that fetches posts from the JSONPlaceholder API and displays them as interactive cards. When a user clicks on a card, they are redirected to a detailed view of that specific post.
+A simple React application that fetches posts from the JSONPlaceholder API and displays them as in the table. When a user clicks on a edit, they are redirected to a edit that specific post and update it.
 
 ## Features
 
 - Fetches data from JSONPlaceholder API
-- Displays posts as responsive cards
-- Clickable cards
-- Dynamic routing for individual post details
+- Displays posts in the table
+- With action buttons as Edit and Delete
+- Edits data in the form using routing in url
+- Confirms delete operation bfeore deleting data from table
+- Dynamic routing 
 - Clean and minimal UI
 - Uses React Hooks (useState, useEffect)
 - Uses React Router for navigation
