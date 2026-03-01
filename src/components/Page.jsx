@@ -11,6 +11,8 @@ function Page({ users, setUsers }) {
   return (
     <>
       <div className="card-container">
+        <button onClick={() => navigate("/create")}>Create a new Post</button>
+        <br /> <br />
         <table border="1">
           <thead>
             <tr>

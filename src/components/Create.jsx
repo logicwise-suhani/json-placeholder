@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function Edit({ users, setUsers }) {
+function Create({ users, setUsers, nextId, setNextId }) {
     const navigate = useNavigate();
     const { editId } = useParams();
+
     const [data, setData] = useState({
         title: "",
         body: ""
     });
-
-    useEffect(() => {
-        const user = users.find(u => u.id === Number(editId));
-        if (user) {
-            setData(user);
-        }
-    }, [editId, users]);
 
     const handleChange = (e) => {
         setData({
@@ -26,29 +20,32 @@ function Edit({ users, setUsers }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const updatedUsers = users.map(key => (
-            key.id === Number(editId) ? { ...key, ...data } : key
-        ))
-        setUsers(updatedUsers);
+        const newUsers = {
+            ...data,
+            userId: nextId,
+            id: nextId
+        };
 
+        setUsers([...users, newUsers]);
+        setNextId(prev => prev + 1);
         navigate("/page");
     }
 
     return (
         <>
-            <h2>Edit page</h2>
+            <h3>This is create page</h3>
             <form onSubmit={handleSubmit}>
                 <label>Title: {" "}</label>
-                <input placeholder="Edit title" name="title" value={data.title} onChange={handleChange} />
+                <input placeholder="Create title" name="title" value={data.title} onChange={handleChange} />
                 <br /> <br />
                 <label>Body: {" "}</label>
-                <textarea placeholder="Edit body" name="body" value={data.body} onChange={handleChange}
+                <textarea placeholder="Create body" name="body" value={data.body} onChange={handleChange}
                     style={{ height: "200px", width: "300px" }} />
                 <br /> <br />
-                <button>Update</button>
+                <button>Create</button>
             </form>
         </>
-    );
+    )
 }
 
-export default Edit;
+export default Create;
